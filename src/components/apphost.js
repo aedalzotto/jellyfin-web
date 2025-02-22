@@ -15,7 +15,7 @@ function getBaseProfileOptions(item) {
         if (browser.edge) {
             disableHlsVideoAudioCodecs.push('mp3');
         }
-        if (!browser.edgeChromium) {
+        if (!(browser.edgeChromium || browser.web0s)) {
             disableHlsVideoAudioCodecs.push('ac3');
             disableHlsVideoAudioCodecs.push('eac3');
         }
