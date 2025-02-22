@@ -48,8 +48,14 @@ export function enableHlsJsPlayer(runTimeTicks, mediaType) {
         return false;
     }
 
+    // webOS native player has issues with multichannel audio
+    // Older versions will still use native player due to the lack of MSE support
+    if (browser.web0s) {
+        return true;
+    }
+
     // The native players on these devices support seeking live streams, no need to use hls.js here
-    if (browser.tizen || browser.web0s) {
+    if (browser.tizen) {
         return false;
     }
 
